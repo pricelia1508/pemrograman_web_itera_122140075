@@ -59,6 +59,7 @@ export const renderDashboard = (root) => {
   root.innerHTML = '';
   root.appendChild(wrapper);
 
+// Submit & edit
   document.getElementById('input-form').addEventListener('submit', (e) => {
     e.preventDefault();
     const kategori = document.getElementById('kategori').value;
@@ -133,6 +134,7 @@ const renderNextClass = (list) => {
   return `<table><tbody>${sorted}</tbody></table>`;
 };
 
+// Global helpers
 window.editItem = (kategori, idx, nama, tanggal) => {
   const form = document.getElementById('input-form');
   form.querySelector('#matkul').value = nama;
