@@ -1,61 +1,16 @@
 # Aplikasi Manajemen Buku Pribadi
 
-Aplikasi ini dibuat untuk membantu pengguna mencatat dan mengelola koleksi buku pribadi. Pengguna dapat menambahkan informasi buku yang dimiliki, sedang dibaca, atau ingin dibeli. Aplikasi dibangun menggunakan React dengan pendekatan komponen fungsional, React Hooks, serta Context API untuk manajemen state global.
+## Deskripsi Aplikasi
 
-## ✨ Fitur Utama
+Aplikasi ini merupakan sistem manajemen buku berbasis React yang memungkinkan pengguna mencatat dan mengelola koleksi buku pribadi mereka. Pengguna dapat menambahkan buku yang dimiliki, sedang dibaca, atau ingin dibeli, serta melakukan pencarian, pengeditan, dan penghapusan data buku.
 
-- Menambahkan buku baru (judul, penulis, tahun, status)
-- Mengedit dan menghapus buku dari daftar
-- Filter berdasarkan status: Milik, Sedang Dibaca, Ingin Dibeli
-- Pencarian berdasarkan judul atau penulis
-- Statistik jumlah buku berdasarkan status
-- Navigasi antar halaman (Home, Statistik, Tentang)
-- Penyimpanan data di localStorage
+## Cara Instalasi
 
-## ⚙️ Teknologi yang Digunakan
+1. Clone repositori ini:
 
-- React (Functional Components + Hooks)
-- Context API
-- React Router v6
-- Custom Hooks: `useLocalStorage`, `useBookStats`
-- PropTypes untuk type checking
-- React Testing Library untuk unit testing
-
-## 🧩 Struktur Folder
-
-```
-
-src/
-├── components/
-│ ├── Alert/
-│ ├── BookFilter/
-│ ├── BookForm/
-│ ├── BookItem/
-│ ├── Header/
-│ └── Navbar/
-├── context/
-│ ├── AlertContext.js
-│ └── BookContext.js
-├── hooks/
-│ ├── useBookStats.js
-│ └── useLocalStorage.js
-├── pages/
-│ ├── About/
-│ ├── Home/
-│ └── Stats/
-├── App.js
-├── App.css
-├── index.js
-└── setupTests.js
-
-```
-
-## 🚀 Cara Menjalankan Aplikasi
-
-1. Clone repository:
    ```bash
-   git clone https://github.com/username/pemrograman_web_itera_122140075.git
-   cd pemrograman_web_itera_122140075
+   git clone https://github.com/username/book-management-app.git
+   cd book-management-app
    ```
 
 2. Install dependencies:
@@ -64,48 +19,119 @@ src/
    npm install
    ```
 
-3. Jalankan aplikasi di local:
-
+3. Jalankan aplikasi:
    ```bash
    npm start
    ```
 
-4. Jalankan pengujian unit:
-   ```bash
-   npm test
-   ```
+Aplikasi akan berjalan di `http://localhost:3000`
 
-## 🧪 Testing
+## Screenshot Antarmuka
 
-Aplikasi telah diuji dengan React Testing Library. Terdapat minimal 5 file pengujian unit:
+**Home Page:**
+Menampilkan daftar buku, form tambah/edit, dan fitur filter & pencarian.
+![home](./public/home.png)
 
-- `BookForm.test.jsx`
-- `BookItem.test.jsx`
-- `BookFilter.test.jsx`
-- `Home.test.jsx`
-- `Stats.test.jsx`
+**Stats Page:**
+Menampilkan statistik jumlah buku berdasarkan status koleksi.
+![stats](./public/stats.png)
 
-📸 Screenshot hasil testing disimpan dalam folder `/screenshots`.
+**Alert:**
+![stats](./public/alert.png)
 
-## ✅ Kesesuaian dengan Kriteria Tugas
+## Penjelasan Penggunaan Fitur React
 
-| Kriteria                        | Status |
-| ------------------------------- | ------ |
-| Menambah, mengedit, hapus buku  | ✅     |
-| Filter dan pencarian buku       | ✅     |
-| Navigasi multi-halaman (Router) | ✅     |
-| useState dan useEffect          | ✅     |
-| Context API                     | ✅     |
-| 3+ Komponen Reusable            | ✅     |
-| Custom Hooks (2)                | ✅     |
-| PropTypes                       | ✅     |
-| localStorage                    | ✅     |
-| 5+ Unit Testing                 | ✅     |
-| Error handling form input       | ✅     |
+### 1. useState dan useEffect
 
-## 👩‍💻 Tentang Pengembang
+- Digunakan dalam `BookForm.jsx` dan `Home.jsx` untuk mengelola input form dan state editing:
 
-Dikembangkan oleh: **Pricelia Putri (122140075)**
-Untuk memenuhi Tugas Praktikum **Pemrograman Web** di ITERA
+```js
+const [title, setTitle] = useState("");
+useEffect(() => {
+  if (editingBook) { ... }
+}, [editingBook]);
+```
 
----
+### 2. Context API untuk State Management
+
+- `BookContext.js` dan `AlertContext.js` mengatur global state menggunakan `createContext` dan `useContext`:
+
+```js
+<BookProvider>
+  <AlertProvider>
+    <App />
+  </AlertProvider>
+</BookProvider>
+```
+
+### 3. React Router
+
+- Digunakan di `App.js` untuk membuat navigasi antar halaman:
+
+```js
+<Routes>
+  <Route path="/" element={<Home />} />
+  <Route path="/stats" element={<Stats />} />
+</Routes>
+```
+
+### 4. Komponen Reusable
+
+- Komponen modular seperti `BookForm`, `BookItem`, `BookFilter`, `Header`, dan `Alert` digunakan berulang.
+
+### 5. Penyimpanan dengan localStorage
+
+- Diterapkan melalui custom hook `useLocalStorage.js`:
+
+```js
+const [books, setBooks] = useLocalStorage("books", []);
+```
+
+### 6. Custom Hooks
+
+- `useLocalStorage.js`: menyimpan dan mengambil data dari localStorage.
+- `useBookStats.js`: menghitung jumlah buku berdasarkan status.
+
+### 7. PropTypes
+
+- Validasi properti digunakan di semua komponen:
+
+```js
+BookForm.propTypes = { onAddBook: PropTypes.func.isRequired, ... };
+```
+
+### 8. Error Handling
+
+- Validasi input form dengan alert jika data tidak lengkap:
+
+```js
+if (!title.trim()) showAlert("Semua field wajib diisi!", "error");
+```
+
+## Laporan Hasil Testing
+
+Pengujian unit dilakukan dengan React Testing Library pada:
+
+- BookForm (`BookForm.test.jsx`)
+- BookItem (`BookItem.test.jsx`)
+- BookFilter (`BookFilter.test.jsx`)
+- Home Page (`Home.test.jsx`)
+- Stats Page (`Stats.test.jsx`)
+
+Setiap file test mencakup:
+
+- Rendering komponen
+- Simulasi interaksi user
+- Validasi pemanggilan fungsi callback dan output yang ditampilkan
+
+Contoh:
+
+```js
+expect(mockAdd).toHaveBeenCalledWith(
+  expect.objectContaining({
+    title: "Buku Testing",
+  })
+);
+```
+
+![testing](./public/testing.png)
