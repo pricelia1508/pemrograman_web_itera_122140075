@@ -1,8 +1,3 @@
-Berikut adalah isi `README.md` hasil final yang sudah diperbarui dan siap digunakan:
-
----
-
-```markdown
 # Aplikasi Manajemen Buku Pribadi
 
 Aplikasi ini dibuat untuk membantu pengguna mencatat dan mengelola koleksi buku pribadi. Pengguna dapat menambahkan informasi buku yang dimiliki, sedang dibaca, atau ingin dibeli. Aplikasi dibangun menggunakan React dengan pendekatan komponen fungsional, React Hooks, serta Context API untuk manajemen state global.
@@ -27,6 +22,7 @@ Aplikasi ini dibuat untuk membantu pengguna mencatat dan mengelola koleksi buku 
 - React Testing Library untuk unit testing
 
 ## 🧩 Struktur Folder
+
 ```
 
 src/
@@ -52,7 +48,7 @@ src/
 ├── index.js
 └── setupTests.js
 
-````
+```
 
 ## 🚀 Cara Menjalankan Aplikasi
 
@@ -60,6 +56,8 @@ src/
    ```bash
    git clone https://github.com/username/pemrograman_web_itera_122140075.git
    cd pemrograman_web_itera_122140075
+   ```
+
 ````
 
 2. Install dependencies:
@@ -109,7 +107,8 @@ Aplikasi telah diuji dengan React Testing Library. Terdapat minimal 5 file pengu
 
 ## 👩‍💻 Tentang Pengembang
 
-Dikembangkan oleh: **Pricelia Putri (122140075)**  
+Dikembangkan oleh: **Pricelia Putri (122140075)**
 Untuk memenuhi Tugas Praktikum **Pemrograman Web** di ITERA
 
 ---
+````
