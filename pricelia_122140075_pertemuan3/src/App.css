@@ -1,0 +1,26 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f6fdf8;
+  color: #2e4d3d;
+}
+
+.container {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+
+.empty-message {
+  text-align: center;
+  padding: 2rem;
+  background-color: #eaf8ef;
+  border-radius: 8px;
+  color: #5f7869;
+  font-style: italic;
+}

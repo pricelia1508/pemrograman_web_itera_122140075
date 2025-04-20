@@ -1,0 +1,19 @@
+.container {
+  max-width: 900px;
+  margin: 2.5rem auto;
+  padding: 1rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.empty-message {
+  text-align: center;
+  padding: 1rem;
+  color: #6b8c7e;
+  font-style: italic;
+  background-color: #e6f4ec;
+  border: 1px dashed #a8d5ba;
+  border-radius: 10px;
+  margin-top: 2rem;
+  font-size: 1.05rem;
+}
